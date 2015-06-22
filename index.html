@@ -1,49 +1,55 @@
-# ProtAnneal v0.11
+<h1>ProtAnneal v0.11</h1>
 
-## About ProtAnneal
-ProtAnneal tries to construct a protein with a given backbone shape. It
+<h2>About ProtAnneal</h2>
+
+<p>ProtAnneal tries to construct a protein with a given backbone shape. It
 does that by starting out with a skeleton protein, and goes on mutating the
 amino acid and tries the reduce the Zdope score, which is an indicator of the
-energy of the protein. This optimized protein is might be the one we're looking
-for.
+energy of the protein. This optimized protein is might be the one we&rsquo;re looking
+for.</p>
 
-## Dependencies
-1. naccess - Can be downloaded from [this
-   page](http://www.bioinf.manchester.ac.uk/naccess/).
-2. Modeller - Can be downloaded from [this page](https://salilab.org/modeller/).
-3. Dunbrack Rotamer library - Can be downloaded from [this
-   page](http://dunbrack.fccc.edu/bbdep2010/DownloadPageExample.php).
-4. reduce - Can be downloaded from [this
-   page](http://kinemage.biochem.duke.edu/software/).
+<h2>Dependencies</h2>
 
-Note that the above dependencies are licensed software, and a license has to be
-obtained before downloading them.
+<ol>
+<li>naccess - Can be downloaded from <a href="http://www.bioinf.manchester.ac.uk/naccess/">this
+page</a>.</li>
+<li>Modeller - Can be downloaded from <a href="https://salilab.org/modeller/">this page</a>.</li>
+<li>Dunbrack Rotamer library - Can be downloaded from <a href="http://dunbrack.fccc.edu/bbdep2010/DownloadPageExample.php">this
+page</a>.</li>
+<li>reduce - Can be downloaded from <a href="http://kinemage.biochem.duke.edu/software/">this
+page</a>.</li>
+</ol>
 
-## Installation and usage
-After installing the dependencies, download ProtAnneal and edit the `config.py`
-file in the `source` directory. Modify the location constants appropriately.
 
-Before performing simulated annealing on a pdb file, two things need to be kept
-in mind. First, ProtAnneal can't handle pdb files with more than one subunit,
+<p>Note that the above dependencies are licensed software, and a license has to be
+obtained before downloading them.</p>
+
+<h2>Installation and usage</h2>
+
+<p>After installing the dependencies, download ProtAnneal and edit the <code>config.py</code>
+file in the <code>source</code> directory. Modify the location constants appropriately.</p>
+
+<p>Before performing simulated annealing on a pdb file, two things need to be kept
+in mind. First, ProtAnneal can&rsquo;t handle pdb files with more than one subunit,
 so you need to get only one subunit out of a pdb file. Next, before starting
-annealing, all the buried residues need to be turned into alanine.
+annealing, all the buried residues need to be turned into alanine.</p>
 
-To do the first, use the `get_subunit.py` script to get out the subunit.
-```
-python get_subunit.py <subunit> <pdb_file> > <output_file>
-```
+<p>To do the first, use the <code>get_subunit.py</code> script to get out the subunit.
+<code>
+python get_subunit.py &lt;subunit&gt; &lt;pdb_file&gt; &gt; &lt;output_file&gt;
+</code></p>
 
-Now, use the `correct_offset.py` on the pdb file to fix numbering offset.
-```
-python correct_offset.py <pdb_file>
-```
+<p>Now, use the <code>correct_offset.py</code> on the pdb file to fix numbering offset.
+<code>
+python correct_offset.py &lt;pdb_file&gt;
+</code></p>
 
-Next use the `create_primer.py` to change all the inner residues to alanine.
-```
-python create_primer.py <pdb_file> > <output_file>
-```
+<p>Next use the <code>create_primer.py</code> to change all the inner residues to alanine.
+<code>
+python create_primer.py &lt;pdb_file&gt; &gt; &lt;output_file&gt;
+</code></p>
 
-Finally, use the `main.py` to do the annealing.
-```
-python main.py <pdb_file> <number_of_iterations>
-```
+<p>Finally, use the <code>main.py</code> to do the annealing.
+<code>
+python main.py &lt;pdb_file&gt; &lt;number_of_iterations&gt;
+</code></p>
